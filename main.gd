@@ -1,7 +1,10 @@
 extends Node
 
+enum GAME_MODES {MENU, GAME}
+
 @export var ui_container: Control
 @export var game_container: Node
+@export var hud_container: Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

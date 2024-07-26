@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bhhomdtao85s7"]
+
+[ext_resource type="FontFile" uid="uid://bvl48jljldogy" path="res://assets/fonts/Kanit-Medium.ttf" id="1_0nedi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tvix"]
+bg_color = Color(0.851179, 0.506301, 7.70092e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tiqot"]
+bg_color = Color(0.85098, 0.505882, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1oln7"]
+bg_color = Color(0.870413, 0.383196, 0, 1)
+
+[resource]
+default_font = ExtResource("1_0nedi")
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_5tvix")
+Button/styles/normal = SubResource("StyleBoxFlat_tiqot")
+Button/styles/pressed = SubResource("StyleBoxFlat_1oln7")

@@ -1,0 +1,263 @@
+[gd_scene load_steps=14 format=3 uid="uid://dn57f4rfj4sjl"]
+
+[ext_resource type="Script" path="res://ui/main_menu.gd" id="1_bjfrd"]
+[ext_resource type="Script" path="res://ui/full_menu.gd" id="2_72lm6"]
+[ext_resource type="Theme" uid="uid://b05mpc8otnxng" path="res://assets/font_themes/default_font_theme.tres" id="2_vitub"]
+[ext_resource type="FontFile" uid="uid://b0o18y185xh12" path="res://assets/fonts/Kanit-Bold.ttf" id="3_lr8k7"]
+[ext_resource type="Theme" uid="uid://bhhomdtao85s7" path="res://assets/font_themes/default_menu_buttons.tres" id="4_5l04t"]
+
+[sub_resource type="Animation" id="Animation_lago0"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../IntroMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -650)]
+}
+
+[sub_resource type="Animation" id="Animation_v7pba"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../IntroMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -650), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_citcc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../IntroMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f3cfj"]
+_data = {
+"RESET": SubResource("Animation_citcc"),
+"hide": SubResource("Animation_lago0"),
+"show": SubResource("Animation_v7pba")
+}
+
+[sub_resource type="Animation" id="Animation_fvjvs"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -649)]
+}
+
+[sub_resource type="Animation" id="Animation_lr80u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5bi7u"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -649), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8apas"]
+_data = {
+"RESET": SubResource("Animation_lr80u"),
+"hide": SubResource("Animation_fvjvs"),
+"show": SubResource("Animation_5bi7u")
+}
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("intro_menu", "game_menu", "new_menu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bjfrd")
+intro_menu = NodePath("IntroMenu")
+game_menu = NodePath("GameMenu")
+new_menu = NodePath("IntroMenu")
+
+[node name="IntroMenu" type="Control" parent="." node_paths=PackedStringArray("animation_player")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_72lm6")
+shown = true
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="IntroMenu"]
+libraries = {
+"": SubResource("AnimationLibrary_f3cfj")
+}
+autoplay = "show"
+
+[node name="MarginContainer" type="MarginContainer" parent="IntroMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="CenterContainer" type="VBoxContainer" parent="IntroMenu/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GameTitle" type="Label" parent="IntroMenu/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme = ExtResource("2_vitub")
+theme_override_fonts/font = ExtResource("3_lr8k7")
+theme_override_font_sizes/font_size = 45
+text = "Game Title"
+uppercase = true
+
+[node name="MarginContainer" type="MarginContainer" parent="IntroMenu/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="PressAnyKey" type="Label" parent="IntroMenu/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Press any key"
+uppercase = true
+
+[node name="GameMenu" type="Control" parent="." node_paths=PackedStringArray("animation_player")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_72lm6")
+animation_player = NodePath("AnimationPlayer2")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="GameMenu"]
+libraries = {
+"": SubResource("AnimationLibrary_8apas")
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="GameMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Control" type="Control" parent="GameMenu/MarginContainer2"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameMenu/MarginContainer2/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuTitle" type="Label" parent="GameMenu/MarginContainer2/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_lr8k7")
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+uppercase = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="GameMenu/MarginContainer2/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="ContinueButton" type="Button" parent="GameMenu/MarginContainer2/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_5l04t")
+text = "CONTINUE
+"
+alignment = 0
+
+[node name="NewGameButton" type="Button" parent="GameMenu/MarginContainer2/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_5l04t")
+text = "NEW GAME"
+alignment = 0
+
+[node name="SettingsButton" type="Button" parent="GameMenu/MarginContainer2/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_5l04t")
+text = "SETTINGS"
+alignment = 0
+
+[node name="CreditsButton" type="Button" parent="GameMenu/MarginContainer2/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_5l04t")
+text = "CREDITS"
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="GameMenu/MarginContainer2/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_5l04t")
+text = "QUIT"
+alignment = 0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="IntroMenu/AnimationPlayer" to="IntroMenu" method="_on_animation_player_animation_finished"]
+[connection signal="button_up" from="GameMenu/MarginContainer2/Control/VBoxContainer/ContinueButton" to="." method="_on_continue_button_button_up"]
+[connection signal="button_up" from="GameMenu/MarginContainer2/Control/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_button_up"]
+[connection signal="button_up" from="GameMenu/MarginContainer2/Control/VBoxContainer/SettingsButton" to="." method="_on_settings_button_button_up"]
+[connection signal="button_up" from="GameMenu/MarginContainer2/Control/VBoxContainer/CreditsButton" to="." method="_on_credits_button_button_up"]
+[connection signal="button_up" from="GameMenu/MarginContainer2/Control/VBoxContainer/QuitButton" to="." method="_on_quit_button_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

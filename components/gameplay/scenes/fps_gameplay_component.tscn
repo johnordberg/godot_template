@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc80al1ud801e"]
+
+[ext_resource type="Script" path="res://components/gameplay/scripts/fps_gameplay_component.gd" id="1_pq6co"]
+
+[node name="FpsGameplayComponent" type="Node"]
+script = ExtResource("1_pq6co")

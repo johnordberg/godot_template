@@ -25,7 +25,7 @@ func _on_continue_button_button_up():
 	pass # Replace with function body.
 
 func _on_new_game_button_button_up():
-	change_menu(Menu_States.MENU, new_menu)
+	change_menu(Menu_States.INTRO, new_menu)
 
 func _on_settings_button_button_up():
 	change_menu(Menu_States.MENU, settings_menu)

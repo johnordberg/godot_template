@@ -1,4 +1,4 @@
-class_name Test_Gameplay_Component extends Component
+class_name TestGameplayComponent extends Component
 
 func _process(delta):
 	if !is_enabled:

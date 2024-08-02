@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://emlr7c0yq4l4"]
+
+[ext_resource type="Script" path="res://components/UI/scripts/ui_animator_component.gd" id="1_n7jb0"]
+
+[node name="UiAnimatorComponent" type="Node"]
+script = ExtResource("1_n7jb0")
+
+[node name="Timer" type="Timer" parent="." groups=["AnimatorComponents"]]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

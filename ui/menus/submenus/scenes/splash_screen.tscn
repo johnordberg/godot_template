@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkcoxhntvlkso"]
+
+[ext_resource type="Script" path="res://ui/menus/submenus/scripts/splash_screen.gd" id="1_uoxf4"]
+[ext_resource type="FontFile" uid="uid://b0o18y185xh12" path="res://assets/fonts/Kanit-Bold.ttf" id="2_hhfvu"]
+[ext_resource type="PackedScene" uid="uid://emlr7c0yq4l4" path="res://components/UI/scenes/ui_animator_component.tscn" id="3_ub4k8"]
+[ext_resource type="Curve" uid="uid://cq0qxflwt43qn" path="res://ui/resources/menu_easing.tres" id="4_evq6y"]
+
+[node name="SplashScreen" type="Control" groups=["SubMenu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uoxf4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="GameTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hhfvu")
+theme_override_font_sizes/font_size = 30
+text = "Game Title"
+uppercase = true
+
+[node name="PressAnyButton" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PRESS ANY BUTTON TO CONTINUE"
+
+[node name="UiAnimatorComponent" parent="." node_paths=PackedStringArray("animation_target", "destination") instance=ExtResource("3_ub4k8")]
+animation_target = NodePath("..")
+animation_curve = ExtResource("4_evq6y")
+animation_length = 0.5
+destination = NodePath("Destination")
+
+[node name="Origin" type="Marker2D" parent="UiAnimatorComponent"]
+position = Vector2(1329, 0)
+
+[node name="Destination" type="Marker2D" parent="UiAnimatorComponent"]

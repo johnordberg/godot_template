@@ -1,4 +1,4 @@
-class_name FPS_Gameplay_Component extends Component
+class_name FPSGameplayComponent extends Component
 
 var mouse_hidden = false
 

@@ -1,17 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bluxpeh5xcq45"]
+[gd_scene load_steps=6 format=3 uid="uid://bluxpeh5xcq45"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_sqkgi"]
 [ext_resource type="PackedScene" uid="uid://cc80al1ud801e" path="res://components/gameplay/scenes/fps_gameplay_component.tscn" id="2_71vow"]
 [ext_resource type="PackedScene" uid="uid://orjycx8eab7v" path="res://components/gameplay/scenes/test_gameplay_component.tscn" id="3_vmf7g"]
-[ext_resource type="PackedScene" uid="uid://dn57f4rfj4sjl" path="res://ui/main_menu.tscn" id="4_2ne27"]
+[ext_resource type="Theme" uid="uid://cscx3o7ooqbp8" path="res://assets/font_themes/ui_theme.tres" id="4_6reg7"]
+[ext_resource type="PackedScene" uid="uid://coexvigwfilwr" path="res://ui/menus/ui_main_menu.tscn" id="5_rvag8"]
 
-[node name="Main" type="Node" node_paths=PackedStringArray("ui_container", "game_container", "hud_container")]
+[node name="Main" type="Node"]
 script = ExtResource("1_sqkgi")
-ui_container = NodePath("ClickableUI/UIContainer")
-game_container = NodePath("SubViewportContainer/GameContainer")
-hud_container = NodePath("UnclickableUI/HUDContainer")
 
 [node name="GameplayComponents" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="FpsGameplayComponent" parent="GameplayComponents" instance=ExtResource("2_71vow")]
 is_enabled = false
@@ -25,40 +24,49 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("4_6reg7")
 
 [node name="HUDContainer" type="Control" parent="UnclickableUI"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GameContainer" type="SubViewport" parent="SubViewportContainer"]
-handle_input_locally = false
-render_target_update_mode = 4
-
-[node name="ClickableUI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="UIContainer" type="Control" parent="ClickableUI"]
-z_index = 100
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
-[node name="MainMenu" parent="ClickableUI/UIContainer" instance=ExtResource("4_2ne27")]
+[node name="GameView" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameContainer" type="SubViewport" parent="GameView"]
+unique_name_in_owner = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="ClickableUI" type="Control" parent="."]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_6reg7")
+
+[node name="MenuContainer" type="Control" parent="ClickableUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UiMainMenu" parent="ClickableUI/MenuContainer" instance=ExtResource("5_rvag8")]
 layout_mode = 1

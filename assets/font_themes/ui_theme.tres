@@ -1,0 +1,53 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cscx3o7ooqbp8"]
+
+[ext_resource type="FontFile" uid="uid://bvl48jljldogy" path="res://assets/fonts/Kanit-Medium.ttf" id="1_jbvap"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1sg4e"]
+bg_color = Color(0.6, 0.6, 0.6, 0.258824)
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hon0a"]
+bg_color = Color(0.933333, 0.607843, 0, 1)
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhdrh"]
+bg_color = Color(0.933333, 0.607843, 0, 1)
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jji4e"]
+bg_color = Color(0.933333, 0.607843, 0, 0)
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sebk6"]
+bg_color = Color(0.933333, 0.607843, 0, 0)
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(1, 1, 1, 0.396078)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_jbvap")
+Button/styles/disabled = SubResource("StyleBoxFlat_1sg4e")
+Button/styles/focus = SubResource("StyleBoxFlat_hon0a")
+Button/styles/hover = SubResource("StyleBoxFlat_nhdrh")
+Button/styles/normal = SubResource("StyleBoxFlat_jji4e")
+Button/styles/pressed = SubResource("StyleBoxFlat_sebk6")

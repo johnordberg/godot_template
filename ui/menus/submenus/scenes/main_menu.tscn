@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://bq7n7y4hi4gbh"]
+
+[ext_resource type="Script" path="res://ui/menus/submenus/scripts/main_menu.gd" id="1_628pk"]
+[ext_resource type="FontFile" uid="uid://b0o18y185xh12" path="res://assets/fonts/Kanit-Bold.ttf" id="2_gi0ja"]
+[ext_resource type="PackedScene" uid="uid://emlr7c0yq4l4" path="res://components/UI/scenes/ui_animator_component.tscn" id="3_e3odm"]
+[ext_resource type="Theme" uid="uid://cscx3o7ooqbp8" path="res://assets/font_themes/ui_theme.tres" id="3_js0g0"]
+[ext_resource type="Curve" uid="uid://cq0qxflwt43qn" path="res://ui/resources/menu_easing.tres" id="4_2osrj"]
+
+[node name="MainMenu" type="Control" groups=["SubMenu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_628pk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Control" type="Control" parent="MarginContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="GameTitle" type="Label" parent="MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gi0ja")
+theme_override_font_sizes/font_size = 20
+text = "Main Menu"
+uppercase = true
+
+[node name="ContinueGame" type="Button" parent="MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_js0g0")
+text = "CONTINUE"
+alignment = 0
+
+[node name="NewGame" type="Button" parent="MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_js0g0")
+text = "NEW GAME"
+alignment = 0
+
+[node name="LoadGame" type="Button" parent="MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_js0g0")
+text = "LOAD GAME"
+alignment = 0
+
+[node name="Settings" type="Button" parent="MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_js0g0")
+text = "SETTINGS"
+alignment = 0
+
+[node name="Credits" type="Button" parent="MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_js0g0")
+text = "CREDITS
+"
+alignment = 0
+
+[node name="Quit" type="Button" parent="MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_js0g0")
+text = "QUIT TO DESKTOP
+"
+alignment = 0
+
+[node name="UiAnimatorComponent" parent="." node_paths=PackedStringArray("animation_target", "origin", "destination") instance=ExtResource("3_e3odm")]
+animation_target = NodePath("..")
+animation_curve = ExtResource("4_2osrj")
+animation_length = 0.5
+origin = NodePath("Origin")
+destination = NodePath("Destination")
+
+[node name="Origin" type="Marker2D" parent="UiAnimatorComponent"]
+position = Vector2(-1152, 0)
+
+[node name="Destination" type="Marker2D" parent="UiAnimatorComponent"]

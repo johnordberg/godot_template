@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cc80al1ud801e" path="res://components/gameplay/scenes/fps_gameplay_component.tscn" id="2_71vow"]
 [ext_resource type="PackedScene" uid="uid://orjycx8eab7v" path="res://components/gameplay/scenes/test_gameplay_component.tscn" id="3_vmf7g"]
 [ext_resource type="Theme" uid="uid://cscx3o7ooqbp8" path="res://assets/font_themes/ui_theme.tres" id="4_6reg7"]
-[ext_resource type="PackedScene" uid="uid://coexvigwfilwr" path="res://ui/menus/ui_main_menu.tscn" id="5_rvag8"]
+[ext_resource type="PackedScene" uid="uid://coexvigwfilwr" path="res://ui/menus/ui_start_menu_container.tscn" id="5_rvag8"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_sqkgi")

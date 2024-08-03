@@ -31,9 +31,9 @@ func _process(delta):
 		if direction == Directions.FORWARDS:
 			direction_multiplier = 1
 		time_counter = clamp(time_counter + (delta * direction_multiplier), 0, animation_length)
-	progress = time_counter / animation_length
-	var difference = destination_coords - origin_coords
-	animation_target.position = origin_coords + (difference * animation_curve.sample(progress))
+		progress = time_counter / animation_length
+		var difference = destination_coords - origin_coords
+		animation_target.position = origin_coords + (difference * animation_curve.sample(progress))
 
 func _get_configuration_warning() -> String:
 	var warnings = ""
@@ -47,12 +47,11 @@ func _get_configuration_warning() -> String:
 func set_initial_state():
 	if state == States.UNINITIALIZED:
 		animation_target.position = origin_coords
-		state = States.PAUSED
 	else:
 		print("already initialized")
 
 func animate_in():
-	if state == States.PAUSED:
+	if not state == States.PLAYING:
 		state = States.PLAYING
 		animation_target.position = origin_coords
 		direction = Directions.FORWARDS
@@ -62,7 +61,7 @@ func animate_in():
 		print("already playing")
 	
 func animate_out():
-	if state == States.PAUSED:
+	if not state == States.PLAYING:
 		state = States.PLAYING
 		animation_target.position = destination_coords
 		direction = Directions.BACKWARDS
@@ -73,11 +72,10 @@ func animate_out():
 
 func _on_timer_timeout():
 	timer.stop()
-	if state == States.PLAYING:
-		state = States.PAUSED
-		if direction == Directions.FORWARDS:
-			if not animation_target.position == origin_coords:
-				animation_target.position = origin_coords
-		elif direction == Directions.BACKWARDS:
-			if not animation_target.position == destination_coords:
-				animation_target.position = destination_coords
+	state = States.PAUSED
+	if direction == Directions.FORWARDS:
+		if not animation_target.position == destination_coords:
+			animation_target.position = destination_coords
+	elif direction == Directions.BACKWARDS:
+		if not animation_target.position == origin_coords:
+			animation_target.position = origin_coords

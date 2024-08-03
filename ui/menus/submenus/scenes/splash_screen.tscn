@@ -41,10 +41,11 @@ uppercase = true
 layout_mode = 2
 text = "PRESS ANY BUTTON TO CONTINUE"
 
-[node name="UiAnimatorComponent" parent="." node_paths=PackedStringArray("animation_target", "destination") instance=ExtResource("3_ub4k8")]
+[node name="UiAnimatorComponent" parent="." node_paths=PackedStringArray("animation_target", "origin", "destination") instance=ExtResource("3_ub4k8")]
 animation_target = NodePath("..")
 animation_curve = ExtResource("4_evq6y")
 animation_length = 0.5
+origin = NodePath("Origin")
 destination = NodePath("Destination")
 
 [node name="Origin" type="Marker2D" parent="UiAnimatorComponent"]

@@ -3,28 +3,48 @@
 [ext_resource type="FontFile" uid="uid://bvl48jljldogy" path="res://assets/fonts/Kanit-Medium.ttf" id="1_jbvap"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1sg4e"]
+content_margin_left = 5.0
+content_margin_right = 5.0
 bg_color = Color(0.6, 0.6, 0.6, 0.258824)
+expand_margin_left = 5.0
 expand_margin_top = 5.0
+expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hon0a"]
+content_margin_left = 5.0
+content_margin_right = 5.0
 bg_color = Color(0.933333, 0.607843, 0, 1)
+expand_margin_left = 5.0
 expand_margin_top = 5.0
+expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhdrh"]
+content_margin_left = 5.0
+content_margin_right = 5.0
 bg_color = Color(0.933333, 0.607843, 0, 1)
+expand_margin_left = 5.0
 expand_margin_top = 5.0
+expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jji4e"]
+content_margin_left = 5.0
+content_margin_right = 5.0
 bg_color = Color(0.933333, 0.607843, 0, 0)
+expand_margin_left = 5.0
 expand_margin_top = 5.0
+expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sebk6"]
+content_margin_left = 5.0
+content_margin_right = 5.0
 bg_color = Color(0.933333, 0.607843, 0, 0)
+expand_margin_left = 5.0
 expand_margin_top = 5.0
+expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
 [resource]

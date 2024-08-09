@@ -1,0 +1,135 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmyqsfhli412o"]
+
+[ext_resource type="Script" path="res://ui/menus/submenus/scripts/settings_menu.gd" id="1_i2yrc"]
+[ext_resource type="FontFile" uid="uid://b0o18y185xh12" path="res://assets/fonts/Kanit-Bold.ttf" id="1_lrx5h"]
+[ext_resource type="Theme" uid="uid://cscx3o7ooqbp8" path="res://assets/font_themes/ui_theme.tres" id="2_33fsu"]
+[ext_resource type="PackedScene" uid="uid://emlr7c0yq4l4" path="res://components/UI/scenes/ui_animator_component.tscn" id="3_llaeu"]
+[ext_resource type="Curve" uid="uid://cq0qxflwt43qn" path="res://ui/resources/menu_easing.tres" id="4_osso2"]
+
+[node name="SettingsMenu" type="Control" groups=["SubMenu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i2yrc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Control" type="Control" parent="MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameTitle" type="Label" parent="MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lrx5h")
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+uppercase = true
+
+[node name="Wrapper" type="VBoxContainer" parent="MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control/VBoxContainer/Wrapper"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Label" type="Label" parent="MarginContainer/Control/VBoxContainer/Wrapper"]
+layout_mode = 2
+theme = ExtResource("2_33fsu")
+text = "Master Volume"
+uppercase = true
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/Control/VBoxContainer/Wrapper"]
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+rounded = true
+scrollable = false
+
+[node name="Wrapper2" type="VBoxContainer" parent="MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control/VBoxContainer/Wrapper2"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Label" type="Label" parent="MarginContainer/Control/VBoxContainer/Wrapper2"]
+layout_mode = 2
+theme = ExtResource("2_33fsu")
+text = "Music Volume
+"
+uppercase = true
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/Control/VBoxContainer/Wrapper2"]
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+rounded = true
+scrollable = false
+
+[node name="Wrapper3" type="VBoxContainer" parent="MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control/VBoxContainer/Wrapper3"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Label" type="Label" parent="MarginContainer/Control/VBoxContainer/Wrapper3"]
+layout_mode = 2
+theme = ExtResource("2_33fsu")
+text = "Game Volume
+"
+uppercase = true
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/Control/VBoxContainer/Wrapper3"]
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+rounded = true
+scrollable = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="SaveAndReturn" type="Button" parent="MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_33fsu")
+text = "SAVE AND RETURN
+"
+
+[node name="UiAnimatorComponent" parent="." node_paths=PackedStringArray("animation_target", "origin", "destination") instance=ExtResource("3_llaeu")]
+animation_target = NodePath("..")
+animation_curve = ExtResource("4_osso2")
+animation_length = 0.5
+origin = NodePath("Origin")
+destination = NodePath("Destination")
+startPosition = 1
+
+[node name="Origin" type="Marker2D" parent="UiAnimatorComponent"]
+position = Vector2(-1152, 0)
+
+[node name="Destination" type="Marker2D" parent="UiAnimatorComponent"]

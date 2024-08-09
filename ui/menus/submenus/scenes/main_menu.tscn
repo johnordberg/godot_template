@@ -98,3 +98,5 @@ startPosition = 3
 position = Vector2(-1152, 0)
 
 [node name="Destination" type="Marker2D" parent="UiAnimatorComponent"]
+
+[connection signal="pressed" from="MarginContainer/Control/VBoxContainer/Settings" to="." method="_on_settings_pressed"]

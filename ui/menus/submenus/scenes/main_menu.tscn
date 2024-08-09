@@ -92,6 +92,7 @@ animation_curve = ExtResource("4_2osrj")
 animation_length = 0.5
 origin = NodePath("Origin")
 destination = NodePath("Destination")
+startPosition = 3
 
 [node name="Origin" type="Marker2D" parent="UiAnimatorComponent"]
 position = Vector2(-1152, 0)

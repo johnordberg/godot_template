@@ -7,4 +7,18 @@ script = ExtResource("1_n7jb0")
 
 [node name="Timer" type="Timer" parent="." groups=["AnimatorComponents"]]
 
+[node name="CenterMarker" type="Marker2D" parent="."]
+
+[node name="LeftMarker" type="Marker2D" parent="."]
+position = Vector2(-1152, 0)
+
+[node name="RightMarker" type="Marker2D" parent="."]
+position = Vector2(1152, 0)
+
+[node name="UpMarker" type="Marker2D" parent="."]
+position = Vector2(0, -648)
+
+[node name="DownMarker" type="Marker2D" parent="."]
+position = Vector2(0, 648)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

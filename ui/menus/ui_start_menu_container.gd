@@ -1,5 +1,6 @@
 extends Control
 
+enum StartEnum {CENTER, UP, DOWN, LEFT, RIGHT, ORIGIN, DESTINATION}
 enum States {SPLASH, MAIN}
 var state = States.SPLASH
 
@@ -22,6 +23,6 @@ func _unhandled_input(event):
 	if state == States.SPLASH:
 		if event is InputEventKey:
 			if event.pressed:
-				splash_animator.animate_out()
-				main_animator.animate_in()
+				splash_animator.animate_from_to(StartEnum.CENTER, StartEnum.RIGHT)
+				main_animator.animate_from_to(StartEnum.LEFT, StartEnum.CENTER)
 				state = States.MAIN

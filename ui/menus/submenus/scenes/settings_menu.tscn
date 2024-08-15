@@ -62,7 +62,7 @@ theme = ExtResource("2_33fsu")
 text = "Master Volume"
 uppercase = true
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/Control/VBoxContainer/Wrapper"]
+[node name="MasterVolume" type="HSlider" parent="MarginContainer/Control/VBoxContainer/Wrapper"]
 layout_mode = 2
 size_flags_vertical = 4
 value = 100.0
@@ -83,7 +83,7 @@ text = "Music Volume
 "
 uppercase = true
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/Control/VBoxContainer/Wrapper2"]
+[node name="MusicVolume" type="HSlider" parent="MarginContainer/Control/VBoxContainer/Wrapper2"]
 layout_mode = 2
 size_flags_vertical = 4
 value = 100.0
@@ -104,7 +104,7 @@ text = "Game Volume
 "
 uppercase = true
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/Control/VBoxContainer/Wrapper3"]
+[node name="GameVolume" type="HSlider" parent="MarginContainer/Control/VBoxContainer/Wrapper3"]
 layout_mode = 2
 size_flags_vertical = 4
 value = 100.0
@@ -133,3 +133,8 @@ startPosition = 1
 position = Vector2(-1152, 0)
 
 [node name="Destination" type="Marker2D" parent="UiAnimatorComponent"]
+
+[connection signal="value_changed" from="MarginContainer/Control/VBoxContainer/Wrapper/MasterVolume" to="." method="_on_master_volume_value_changed"]
+[connection signal="value_changed" from="MarginContainer/Control/VBoxContainer/Wrapper2/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="MarginContainer/Control/VBoxContainer/Wrapper3/GameVolume" to="." method="_on_game_volume_value_changed"]
+[connection signal="pressed" from="MarginContainer/Control/VBoxContainer/SaveAndReturn" to="." method="_on_save_and_return_pressed"]

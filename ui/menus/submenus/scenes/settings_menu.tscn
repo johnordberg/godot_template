@@ -1,10 +1,40 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmyqsfhli412o"]
+[gd_scene load_steps=13 format=3 uid="uid://cmyqsfhli412o"]
 
 [ext_resource type="Script" path="res://ui/menus/submenus/scripts/settings_menu.gd" id="1_i2yrc"]
 [ext_resource type="FontFile" uid="uid://b0o18y185xh12" path="res://assets/fonts/Kanit-Bold.ttf" id="1_lrx5h"]
 [ext_resource type="Theme" uid="uid://cscx3o7ooqbp8" path="res://assets/font_themes/ui_theme.tres" id="2_33fsu"]
 [ext_resource type="PackedScene" uid="uid://emlr7c0yq4l4" path="res://components/UI/scenes/ui_animator_component.tscn" id="3_llaeu"]
+[ext_resource type="Script" path="res://ui/menus/submenus/scripts/key_binding_button.gd" id="4_o4832"]
 [ext_resource type="Curve" uid="uid://cq0qxflwt43qn" path="res://ui/resources/menu_easing.tres" id="4_osso2"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_kkd7v"]
+device = -1
+keycode = 87
+unicode = 119
+
+[sub_resource type="InputEventKey" id="InputEventKey_yhti6"]
+device = -1
+keycode = 83
+unicode = 115
+
+[sub_resource type="InputEventKey" id="InputEventKey_4n35h"]
+device = -1
+keycode = 65
+unicode = 97
+
+[sub_resource type="InputEventKey" id="InputEventKey_6dct8"]
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventKey" id="InputEventKey_7hwjl"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_su8mo"]
+device = -1
+keycode = 4194305
 
 [node name="SettingsMenu" type="Control" groups=["SubMenu"]]
 layout_mode = 3
@@ -29,95 +59,265 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="Control" type="Control" parent="MarginContainer"]
-custom_minimum_size = Vector2(500, 0)
+[node name="HBoxContainer" type="HSplitContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+theme_override_constants/separation = 30
+dragger_visibility = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="GameTitle" type="Label" parent="MarginContainer/Control/VBoxContainer"]
+[node name="GameTitle" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_lrx5h")
 theme_override_font_sizes/font_size = 20
 text = "Settings"
 uppercase = true
 
-[node name="Wrapper" type="VBoxContainer" parent="MarginContainer/Control/VBoxContainer"]
+[node name="Wrapper" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control/VBoxContainer/Wrapper"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Wrapper"]
 layout_mode = 2
 theme_override_constants/margin_top = 10
 
-[node name="Label" type="Label" parent="MarginContainer/Control/VBoxContainer/Wrapper"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Wrapper"]
 layout_mode = 2
 theme = ExtResource("2_33fsu")
 text = "Master Volume"
 uppercase = true
 
-[node name="MasterVolume" type="HSlider" parent="MarginContainer/Control/VBoxContainer/Wrapper"]
+[node name="MasterVolume" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/Wrapper"]
 layout_mode = 2
 size_flags_vertical = 4
 value = 100.0
 rounded = true
 scrollable = false
 
-[node name="Wrapper2" type="VBoxContainer" parent="MarginContainer/Control/VBoxContainer"]
+[node name="Wrapper2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control/VBoxContainer/Wrapper2"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Wrapper2"]
 layout_mode = 2
 theme_override_constants/margin_top = 10
 
-[node name="Label" type="Label" parent="MarginContainer/Control/VBoxContainer/Wrapper2"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Wrapper2"]
 layout_mode = 2
 theme = ExtResource("2_33fsu")
 text = "Music Volume
 "
 uppercase = true
 
-[node name="MusicVolume" type="HSlider" parent="MarginContainer/Control/VBoxContainer/Wrapper2"]
+[node name="MusicVolume" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/Wrapper2"]
 layout_mode = 2
 size_flags_vertical = 4
 value = 100.0
 rounded = true
 scrollable = false
 
-[node name="Wrapper3" type="VBoxContainer" parent="MarginContainer/Control/VBoxContainer"]
+[node name="Wrapper3" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control/VBoxContainer/Wrapper3"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Wrapper3"]
 layout_mode = 2
 theme_override_constants/margin_top = 10
 
-[node name="Label" type="Label" parent="MarginContainer/Control/VBoxContainer/Wrapper3"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Wrapper3"]
 layout_mode = 2
 theme = ExtResource("2_33fsu")
 text = "Game Volume
 "
 uppercase = true
 
-[node name="GameVolume" type="HSlider" parent="MarginContainer/Control/VBoxContainer/Wrapper3"]
+[node name="GameVolume" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/Wrapper3"]
 layout_mode = 2
 size_flags_vertical = 4
 value = 100.0
 rounded = true
 scrollable = false
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/Control/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 10
 
-[node name="SaveAndReturn" type="Button" parent="MarginContainer/Control/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameTitle" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lrx5h")
+theme_override_font_sizes/font_size = 20
+text = "Controls"
+uppercase = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="SplitContainer" type="SplitContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 50
+dragger_visibility = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer"]
+layout_mode = 2
+
+[node name="ForwardsLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme = ExtResource("2_33fsu")
+text = "Forwards
+"
+vertical_alignment = 1
+uppercase = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="BackwardsLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme = ExtResource("2_33fsu")
+text = "Backwards
+"
+vertical_alignment = 1
+uppercase = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="LeftLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme = ExtResource("2_33fsu")
+text = "Left
+"
+vertical_alignment = 1
+uppercase = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="RightLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme = ExtResource("2_33fsu")
+text = "Right
+"
+vertical_alignment = 1
+uppercase = true
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="JumpLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme = ExtResource("2_33fsu")
+text = "Jump
+"
+vertical_alignment = 1
+uppercase = true
+
+[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="JumpLabel2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme = ExtResource("2_33fsu")
+text = "Pause
+"
+vertical_alignment = 1
+uppercase = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer"]
+layout_mode = 2
+
+[node name="ForwardsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "W"
+script = ExtResource("4_o4832")
+key = SubResource("InputEventKey_kkd7v")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="BackwardsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "S"
+script = ExtResource("4_o4832")
+action = "down"
+key = SubResource("InputEventKey_yhti6")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="LeftButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "A"
+script = ExtResource("4_o4832")
+action = "left"
+key = SubResource("InputEventKey_4n35h")
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="RightButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "D"
+script = ExtResource("4_o4832")
+action = "right"
+key = SubResource("InputEventKey_6dct8")
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="JumpButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Space"
+script = ExtResource("4_o4832")
+action = "jump"
+key = SubResource("InputEventKey_7hwjl")
+
+[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="PauseButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Esc"
+script = ExtResource("4_o4832")
+action = "esc"
+key = SubResource("InputEventKey_su8mo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 45
+
+[node name="SaveAndReturn" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 8
 text = "SAVE AND RETURN
 "
 
@@ -134,7 +334,13 @@ position = Vector2(-1152, 0)
 
 [node name="Destination" type="Marker2D" parent="UiAnimatorComponent"]
 
-[connection signal="value_changed" from="MarginContainer/Control/VBoxContainer/Wrapper/MasterVolume" to="." method="_on_master_volume_value_changed"]
-[connection signal="value_changed" from="MarginContainer/Control/VBoxContainer/Wrapper2/MusicVolume" to="." method="_on_music_volume_value_changed"]
-[connection signal="value_changed" from="MarginContainer/Control/VBoxContainer/Wrapper3/GameVolume" to="." method="_on_game_volume_value_changed"]
-[connection signal="pressed" from="MarginContainer/Control/VBoxContainer/SaveAndReturn" to="." method="_on_save_and_return_pressed"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/Wrapper/MasterVolume" to="." method="_on_master_volume_value_changed"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/Wrapper2/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/Wrapper3/GameVolume" to="." method="_on_game_volume_value_changed"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2/ForwardsButton" to="." method="_on_forwards_button_button_up"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2/BackwardsButton" to="." method="_on_backwards_button_button_up"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2/LeftButton" to="." method="_on_left_button_button_up"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2/RightButton" to="." method="_on_right_button_button_up"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2/JumpButton" to="." method="_on_jump_button_button_up"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer2/SplitContainer/VBoxContainer2/PauseButton" to="." method="_on_pause_button_button_up"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SaveAndReturn" to="." method="_on_save_and_return_pressed"]

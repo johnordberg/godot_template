@@ -16,6 +16,7 @@ unique_name_in_owner = true
 is_enabled = false
 
 [node name="TestGameplayComponent" parent="GameplayComponents" instance=ExtResource("3_vmf7g")]
+is_enabled = false
 
 [node name="UnclickableUI" type="Control" parent="."]
 layout_mode = 3

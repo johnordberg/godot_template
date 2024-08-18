@@ -51,6 +51,7 @@ uppercase = true
 [node name="ContinueGame" type="Button" parent="MarginContainer/Control/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_js0g0")
+disabled = true
 text = "CONTINUE"
 alignment = 0
 
@@ -63,6 +64,7 @@ alignment = 0
 [node name="LoadGame" type="Button" parent="MarginContainer/Control/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_js0g0")
+disabled = true
 text = "LOAD GAME"
 alignment = 0
 
@@ -100,3 +102,4 @@ position = Vector2(-1152, 0)
 [node name="Destination" type="Marker2D" parent="UiAnimatorComponent"]
 
 [connection signal="pressed" from="MarginContainer/Control/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/VBoxContainer/Credits" to="." method="_on_credits_pressed"]

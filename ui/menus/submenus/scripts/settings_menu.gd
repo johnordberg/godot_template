@@ -27,10 +27,9 @@ signal game_volume_changed
 signal save_and_return_pressed
 
 func _unhandled_input(event):
-	print("unhandled input detected")
-	if event is InputEventKey:
-		if event.pressed:
-			if key_waiting:
+	if key_waiting:
+		if event is InputEventKey:
+			if event.pressed:
 				key_bind_target.set_key_text(event)
 				key_bind_target.set_key(event)
 				var action = key_bind_target.get_action()

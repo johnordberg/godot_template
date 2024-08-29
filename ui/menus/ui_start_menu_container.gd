@@ -23,6 +23,7 @@ func _ready():
 	
 	main_menu.settings_pressed.connect(_goto_settings)
 	main_menu.credits_pressed.connect(_goto_credits)
+	main_menu.quit_pressed.connect(_quit_game)
 	
 	settings_menu.init_config()
 	
@@ -89,3 +90,6 @@ func _set_game_volume(value):
 func _save_and_close_settings():
 	settings_menu.save_config()
 	_goto_main()
+	
+func _quit_game():
+	get_tree().quit()

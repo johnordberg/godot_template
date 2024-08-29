@@ -101,5 +101,7 @@ position = Vector2(-1152, 0)
 
 [node name="Destination" type="Marker2D" parent="UiAnimatorComponent"]
 
+[connection signal="pressed" from="MarginContainer/Control/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
